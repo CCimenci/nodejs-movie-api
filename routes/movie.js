@@ -14,14 +14,9 @@ router.get('/',( req,res) =>{
   }).catch((err) =>{
     res.json(err);
   })
-});
-
-
-
-
-
+})
+;
 // top 10 list
-
 router.get('/top10',( req,res) =>{
     const promise = Movie.find({}).limit(10).sort({imdb_score :-1});
     promise.then((data) => {
@@ -32,8 +27,6 @@ router.get('/top10',( req,res) =>{
     })
 });
 
-
-
 router.get('/',( req,res) =>{
     const promise = Movie.find({});
     promise.then((data) => {
@@ -43,15 +36,6 @@ router.get('/',( req,res) =>{
         res.json(err);
     })
 });
-
-
-
-
-
-
-
-
-
 
 router.get ('/:movie_id', (req,res,next) =>{
 
@@ -67,11 +51,6 @@ router.get ('/:movie_id', (req,res,next) =>{
   });
 
 });
-
-
-
-
-
 router.get ('/:movie_id', (req,res,next) =>{
 
     const promise = Movie.findById(req.params.movie_id);
@@ -127,23 +106,8 @@ router.delete ('/:movie_id', (req,res,next) =>{
 
 });
 
-
-
-
-
-
-
-
-
-
-
 router.post('/', function(req, res, next) {
-
-
 const movie = new Movie( req.body);
-
-
-
 const promise = movie.save();
 promise.then((data) =>{
   res.json(data);
@@ -152,13 +116,9 @@ promise.then((data) =>{
 
 });
 
-
-
 });
 
-
 // between
-
 router.get('/between/:start_year/:end_year',( req,res) =>{
     const {start_year, end_year} = req.params;
 
@@ -174,8 +134,5 @@ router.get('/between/:start_year/:end_year',( req,res) =>{
         res.json(err);
     })
 });
-
-
-
 
 module.exports = router;

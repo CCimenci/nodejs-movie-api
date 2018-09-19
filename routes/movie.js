@@ -16,7 +16,7 @@ router.get('/',( req,res) =>{
   })
 })
 ;
-// top 10 list
+// top 10 list point
 router.get('/top10',( req,res) =>{
     const promise = Movie.find({}).limit(10).sort({imdb_score :-1});
     promise.then((data) => {

@@ -14,7 +14,7 @@ const promise = director.save();
 promise.then((data) =>{
   res.json(data);
 }).catch((err) => {
-  res.json(err);
+  res.json("data");
 })
 
 });
@@ -114,6 +114,8 @@ router.get('/:director_id', (req, res) => {
         res.json(err);
     });
 });
+
+
 
 router.put('/:director_id', (req, res, next) => {
     const promise = Director.findByIdAndUpdate(

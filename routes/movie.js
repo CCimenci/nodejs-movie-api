@@ -39,6 +39,11 @@ router.get('/',( req,res) =>{
 });
 
 
+
+
+
+
+
 router.get ('/:movie_id', (req,res,next) =>{
   const promise = Movie.findById(req.params.movie_id);
   promise.then((movie)=> {

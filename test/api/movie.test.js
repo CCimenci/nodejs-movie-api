@@ -39,7 +39,6 @@ describe('/api/movie tests',() =>{
 
 
 
-
         })
     });
 
@@ -74,7 +73,6 @@ describe('/api/movie tests',() =>{
                 });
         });
     }) ;
-
 
     describe('/GET/:director_id movie',() =>{
         it('it should GET a movie by the given id ',(done) =>{

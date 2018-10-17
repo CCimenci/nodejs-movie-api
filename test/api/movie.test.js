@@ -36,9 +36,6 @@ describe('/api/movie tests',() =>{
                     done();
 
                 });
-
-
-
         })
     });
 
@@ -68,13 +65,11 @@ describe('/api/movie tests',() =>{
                     res.body.should.have.property('imdb_score');
                     movieId = res.body._id;
                     done();
-
-
                 });
         });
     }) ;
 
-    describe('/GET/:director_id movie',() =>{
+    describe('/GET/:movie_id movie',() =>{
         it('it should GET a movie by the given id ',(done) =>{
             chai.request(server)
                 .get('/api/movies/' + movieId)
@@ -94,8 +89,6 @@ describe('/api/movie tests',() =>{
                 });
         });
     });
-
-
     describe('/PUT/:movie_id movie', () => {
         it('it should UPDATE a movie given by id', (done) => {
             const movie = {
@@ -106,7 +99,6 @@ describe('/api/movie tests',() =>{
                 year: 1970,
                 imdb_score: 9
             };
-
             chai.request(server)
                 .put('/api/movies/' + movieId)
                 .send(movie)
@@ -125,10 +117,19 @@ describe('/api/movie tests',() =>{
                 });
         });
     });
+    describe('/DELETE/:movie_id movie', () => {
+        it('it should DELETE a movie given by id', (done) => {
 
 
-
-
-
-
+            chai.request(server)
+                .delete('/api/movies/' + movieId)
+                .set('x-access-token', token)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('status').eql(1);
+                    done();
+                });
+        });
+    });
 });

@@ -6,3 +6,4 @@ node_js:
     - export NODE_ENV = production
     script:
       -npm run test
+    os: osx

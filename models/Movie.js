@@ -24,12 +24,13 @@ const MovieSchema = new Schema({
         max: 2040,
         min: 1900
     },
-    imdb_score: {
+       imdb_score: {
         type: Number,
         max: 10,
         min: 0
     },
-    createdAt: {
+
+        createdAt: {
         type: Date,
         default: Date.now
     }
